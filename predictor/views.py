@@ -27,6 +27,6 @@ def home(request):
             "Sample Question Papers Practiced":[papers]
 
         })
-        prediction=model.predict(data)[0]
+        prediction=int(model.predict(data)[0])
     return render(request,'index.html',{"prediction":prediction})
 

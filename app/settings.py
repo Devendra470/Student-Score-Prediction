@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-(xy^1vw8_+kk+fxfkwv6fnwu9x$c7dmqsy(7s)q(j8+t=p^fbq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['studentscorepredictor.pythonanywhere.com']
 
 
 # Application definition
