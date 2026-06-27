@@ -199,7 +199,7 @@ Passionate about Machine Learning, Artificial Intelligence, and Full Stack Devel
 
 GitHub: https://github.com/Devendra470
 
-LinkedIn: *(Add your LinkedIn profile link here)*
+LinkedIn: www.linkedin.com/in/devendra-singh-yadav-a952892a7
 
 ---
 
