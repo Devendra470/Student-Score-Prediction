@@ -1,0 +1,218 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Score Predictor</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <div class="header">
+        <span class="header-chip">Machine Learning Project</span>
+
+        <h1>🎓 Student Score Predictor</h1>
+
+        <p>
+            Predict a student's performance index using Machine Learning.
+        </p>
+    </div>
+
+    <div class="card">
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <!-- Hours Studied -->
+
+            <div class="field">
+
+                <label for="hours">
+
+                    <span class="icon">📚</span>
+
+                    Hours Studied
+
+                </label>
+
+                <input
+                    type="number"
+                    id="hours"
+                    name="hours"
+                    placeholder="e.g. 6"
+                    min="0"
+                    max="24"
+                    step="0.5"
+                    required
+                >
+
+            </div>
+
+            <!-- Previous Score -->
+
+            <div class="field">
+
+                <label for="previous">
+
+                    <span class="icon">📝</span>
+
+                    Previous Score
+
+                </label>
+
+                <input
+                    type="number"
+                    id="previous"
+                    name="previous"
+                    placeholder="e.g. 82"
+                    min="0"
+                    max="100"
+                    required
+                >
+
+            </div>
+
+            <!-- Extracurricular Activities -->
+
+            <div class="field">
+
+                <label>
+
+                    <span class="icon">⚽</span>
+
+                    Extracurricular Activities
+
+                </label>
+
+                <div class="toggle-row">
+
+                    <label class="toggle-label">
+
+                        <input
+                            type="radio"
+                            name="activities"
+                            value="Yes"
+                            required
+                        >
+
+                        <span class="toggle-btn">
+
+                            ✓ Yes
+
+                        </span>
+
+                    </label>
+
+                    <label class="toggle-label">
+
+                        <input
+                            type="radio"
+                            name="activities"
+                            value="No"
+                        >
+
+                        <span class="toggle-btn">
+
+                            ✗ No
+
+                        </span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+            <!-- Sleep Hours -->
+
+            <div class="field">
+
+                <label for="sleep">
+
+                    <span class="icon">🌙</span>
+
+                    Sleep Hours
+
+                </label>
+
+                <input
+                    type="number"
+                    id="sleep"
+                    name="sleep"
+                    placeholder="e.g. 7"
+                    min="0"
+                    max="24"
+                    step="0.5"
+                    required
+                >
+
+            </div>
+
+            <!-- Sample Papers -->
+
+            <div class="field">
+
+                <label for="papers">
+
+                    <span class="icon">📄</span>
+
+                    Sample Question Papers Practiced
+
+                </label>
+
+                <input
+                    type="number"
+                    id="papers"
+                    name="papers"
+                    placeholder="e.g. 5"
+                    min="0"
+                    step="1"
+                    required
+                >
+
+            </div>
+
+            <hr class="divider">
+
+            <button type="submit" class="btn-submit">
+
+                Predict Score →
+
+            </button>
+
+        </form>
+
+        {% if prediction is not None %}
+
+        <div class="result-box">
+
+            <div class="result-label">
+
+                Predicted Performance Index
+
+            </div>
+
+            <div class="result-score">
+
+                {{ prediction|floatformat:2 }}
+
+            </div>
+
+            <div class="result-note">
+
+                Generated using Linear Regression Model
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+</html>

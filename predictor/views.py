@@ -2,11 +2,12 @@ from django.shortcuts import render
 import joblib
 import pandas as pd
 
-model=joblib.load("models\linear_regression.pkl")
+model=joblib.load(r"models\linear_regression.pkl")
 # Create your views here.
 def home(request):
     prediction=None
     if(request.method=="POST"):
+        print(request.POST)
         hours=float(request.POST['hours'])
         previous=float(request.POST['previous'])
         activities = request.POST["activities"]
@@ -19,7 +20,7 @@ def home(request):
 
             "Previous Scores":[previous],
 
-            "Extracurricular Activities":[activity],
+            "Extracurricular Activities":[activities],
 
             "Sleep Hours":[sleep],
 
@@ -27,5 +28,5 @@ def home(request):
 
         })
         prediction=model.predict(data)[0]
-        return render(request,'index.html',{"prediction":prediction})
+    return render(request,'index.html',{"prediction":prediction})
 
