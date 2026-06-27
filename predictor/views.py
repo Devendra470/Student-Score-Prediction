@@ -2,7 +2,13 @@ from django.shortcuts import render
 import joblib
 import pandas as pd
 
-model=joblib.load(r"models\linear_regression.pkl")
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+MODEL_PATH = BASE_DIR / "models" / "linear_regression.pkl"
+
+model = joblib.load(MODEL_PATH)
 # Create your views here.
 def home(request):
     prediction=None
